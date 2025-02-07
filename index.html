@@ -1,286 +1,129 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-BOOK: VIVER É ALÉM DE EXISTIR</title>
+    <title>Rádio Web Estribado na Fé</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding-bottom: 60px;
-            position: relative;
-            overflow-x: hidden;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://github.com/IPnoisy/paginadevenda/blob/main/imagem%20perfil%20IP%20NOISY.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            opacity: 0.2;
-            z-index: -1;
+            color: #333;
         }
         header {
-            background-color: rgba(40, 40, 40, 0.9);
-            width: 100%;
-            padding: 20px;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
-        h1 {
-            color: #f5f5f5;
-            font-size: 30px;
-            font-weight: bold;
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         .content {
-            max-width: 600px;
-            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .main-content {
+            flex: 1;
             padding: 20px;
-            background: rgba(30, 30, 30, 0.9);
-            border-radius: 10px;
-            margin: 20px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s forwards;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .content h2 {
-            color: #ccc;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        .content p {
-            color: #bbb;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .highlight {
-            color: #ffffff;
-            font-size: 26px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            background: none; /* Removido o fundo */
-        }
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            color: #ff6347;
-            background: black;
-            padding: 10px 30px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-top: 5px;
-            box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
-        }
-        .button {
-            background-color: #888;
-            color: white;
-            padding: 12px 25px;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            transition: all 0.3s ease-in-out;
-        }
-        .button:hover {
-            background-color: #ff6347;
-            transform: scale(1.1);
+        .main-content h2 {
+            color: #1a1a1a;
         }
         footer {
             background-color: #1a1a1a;
+            color: white;
             text-align: center;
-            padding: 8px;
-            width: 100%;
-            color: white;
-            font-size: 12px;
-            position: fixed;
-            bottom: 0;
-        }
-
-        .social-links, .testimonials, .reviews-form {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s forwards;
-        }
-
-        .testimonials {
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .testimonial {
-            background: rgba(40, 40, 40, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px;
-            color: #ccc;
-            font-style: italic;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .reviews-form {
-            flex-direction: column;
-            max-width: 600px;
-            width: 100%;
-            display: none; /* Inicialmente oculto */
-        }
-
-        .testimonial-heading {
-            font-size: 28px;
-            color: #f0a500;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .social-links img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .product-image, .summary-image {
-            max-width: 100%;
-            width: 450px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .review-input {
-            width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .stream-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
             border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #333;
-            color: white;
-            font-size: 16px;
+            cursor: pointer;
         }
-
-        /* Media query para telas maiores (PC) */
-        @media (min-width: 1024px) {
-            .button {
-                width: 100%;
-            }
-            .product-image {
-                width: 600px;
-            }
-            .summary-image {
-                width: 600px;
-            }
+        .stream-button:hover {
+            background-color: #218838;
         }
-
-        /* Media query para telas menores (Celular) */
-        @media (max-width: 768px) {
-            .button {
-                width: 100%;
-            }
-            .social-links {
-                flex-direction: row;
-                gap: 15px;
-            }
-        }
-        .contact {
-            font-size: 12px;
-            color: #ccc;
-            margin-top: 5px;
-        }
-        /* Estilo para as redes sociais */
-        .social-links p {
-            color: white;
+        .weather {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>E-BOOK: VIVER É ALÉM DE EXISTIR</h1>
-</header>
+    <header>
+        <h1>Rádio Web Estribado na Fé</h1>
+    </header>
 
-<!-- IMAGEM DA PROPAGANDA DO E-BOOK -->
-<img src="https://github.com/IPnoisy/paginadevenda/blob/main/imagem%20do%20produto%20venda%20(Viver%20%C3%A9%20Al%C3%A9m%20de%20existir).png?raw=true" alt="Propaganda do E-book" class="product-image">
+    <div class="container">
+        <div class="content">
+            <div class="main-content">
+                <h2>Bem-vindo à nossa rádio!</h2>
+                <p>Somos uma rádio dedicada a transmitir mensagens de fé, esperança e inspiração. Aqui, você encontra músicas, pregações e reflexões que vão transformar o seu dia.</p>
+                <p>Fique conectado com a gente e aproveite os conteúdos que preparamos especialmente para você.</p>
+                <button class="stream-button" onclick="window.location.href='https://seulinkdeplayer'">Ouça agora</button>
+                
+                <!-- Seção do clima -->
+                <div id="weather" class="weather">
+                    <h3>Clima Atual de Sapiranga</h3>
+                    <p id="weather-info">Carregando clima...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Frase abaixo da imagem de propaganda -->
-<p class="highlight">10 Capítulos que vão mudar sua visão de vida.</p>
-    <!-- IMAGEM DO SUMÁRIO DO E-BOOK -->
+    <footer>
+        <p>&copy; 2025 Rádio Web Estribado na Fé. Todos os direitos reservados.</p>
+    </footer>
 
-<img src="https://github.com/IPnoisy/paginadevenda/blob/main/imagem%20sum%C3%A1rio%20e-book(Viver%20%C3%A9%20Al%C3%A9m%20de%20Existir).png?raw=true" 
-     alt="Sumário do E-book" 
-     class="product-image">
+    <script>
+        const apiKey = '855be5a77626eb01e9c49f81b124d7c6';  // Substitua pela sua chave da OpenWeatherMap
+        const cidade = 'Sapiranga,BR';  // Cidade: Sapiranga, Brasil
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`;
 
-<!-- Seção "Por que comprar?" -->
-<div class="content">
-    <h2>Adquira agora o seu por menos de 10 Reais!</h2>
-    <p><strong>O E-book "Viver é Além de Existir: Pare de sobreviver e comece a viver."</strong> é para você que deseja conquistar uma vida mais plena, tomando decisões conscientes e vivenciando cada momento com intensidade.</p>
-    
-    <p class="highlight">Por apenas:</p>
-    <p class="price">R$ 8,90</p>
-
-    <a href="https://pay.cakto.com.br/c5NpFgc" class="button" target="_blank">COMPRAR AGORA</a>
-    
-   <!-- Botão para amostra grátis -->
-<button id="amostraBtn" class="button">Amostra Grátis Capítulo 1</button>
-
-<!-- Imagem da amostra (inicialmente oculta) -->
-<div id="amostraContainer" style="display: none; text-align: center; margin-top: 20px;">
-    <img src="https://github.com/IPnoisy/paginadevenda/blob/main/amostra%20e-book%20viver%20%C3%A9%20al%C3%A9m%20de%20existir.png?raw=true" alt="Amostra Capítulo 1" style="max-width: 100%; border-radius: 10px; box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);">
-</div>
-
-<script>
-    // Função para alternar a exibição da imagem
-    document.getElementById('amostraBtn').addEventListener('click', function() {
-        var amostraContainer = document.getElementById('amostraContainer');
-        if (amostraContainer.style.display === 'none') {
-            amostraContainer.style.display = 'block';
-            this.textContent = 'Ocultar Amostra';
-        } else {
-            amostraContainer.style.display = 'none';
-            this.textContent = 'Amostra Grátis Capítulo 1';
+        // Função para obter e exibir as informações do clima
+        function obterClima() {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.cod === 200) {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+                        const climaAtual = `Temperatura: ${temperatura}°C, ${descricao}`;
+                        document.getElementById('weather-info').innerText = climaAtual;
+                    } else {
+                        document.getElementById('weather-info').innerText = 'Não foi possível obter o clima.';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('weather-info').innerText = 'Erro ao carregar clima.';
+                });
         }
-    });
-</script>
-</div>
 
-<footer>
-    <p>&copy; 2025 Viver é Além de Existir. Todos os direitos reservados.</p>
-</footer>
+        // Chama a função ao carregar a página
+        window.onload = obterClima;
+    </script>
 
 </body>
 </html>
